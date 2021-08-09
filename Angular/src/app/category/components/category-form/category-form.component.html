@@ -1,0 +1,60 @@
+<mat-card>
+  <form
+    class="form-container"
+    [formGroup]="catForm"
+    (ngSubmit)="onSubmit()"
+    novalidate
+  >
+  <div *ngIf="mode=='create';else edit">
+    <h1 class="text-center">Create Category</h1>
+  </div>
+  <ng-template #edit>
+    <h1 class="text-center">Update Category</h1>
+  </ng-template>
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="cat_name" />
+      <mat-error
+        class="text-danger"
+        *ngIf="
+          catForm.controls.cat_name.invalid && catForm.controls.cat_name.touched
+        "
+        >Categoory name is required</mat-error
+      >
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput placeholder="Created by" type="text" formControlName="created_by" />
+      <mat-error
+        class="text-danger"
+        *ngIf="
+        catForm.controls.created_by.invalid && catForm.controls.created_by.touched
+        "
+        >Created by is required</mat-error
+      >
+    </mat-form-field>
+
+
+    <div>
+      <button
+        mat-raised-button
+        type="submit"
+        color="accent"
+        class="me-3"
+        [disabled]="!catForm.valid"
+        *ngIf="mode=='create'">
+          Save
+      </button>
+      <button
+        mat-raised-button
+        type="submit"
+        color="accent"
+        class="me-3"
+        [disabled]="!catForm.valid"
+        *ngIf="mode=='edit'">
+          Update
+      </button>
+      <button mat-raised-button type="reset">Cancel</button>
+    </div>
+  </form>
+</mat-card>

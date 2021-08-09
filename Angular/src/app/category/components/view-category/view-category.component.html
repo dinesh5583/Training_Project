@@ -1,0 +1,16 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 mx-auto py-5">
+      <ul class="list-group" *ngFor="let u of user">
+        <li class="list-group-item active">Category id: {{u.cat_id}}</li>
+        <li class="list-group-item">parent id: {{u.parent_id}}</li>
+        <li class="list-group-item">category name: {{u.cat_name}}</li>
+        <li class="list-group-item">Created by: {{u.created_by}}</li>
+        <li class="list-group-item">created at: {{u.created_at | date}}</li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>

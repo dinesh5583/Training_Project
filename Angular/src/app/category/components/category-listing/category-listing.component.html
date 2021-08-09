@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <mat-toolbar class="d-flex justify-content-between">
+    <div>
+      <h1>Category List</h1>
+    </div>
+    <div>
+      <button class="btn btn-sm btn-primary" [routerLink]="['/dashboard/category/new']">
+        Create New Category
+      </button>
+    </div>
+  </mat-toolbar>
+  <div class="row">
+    <div class="card me-1 mb-3" style="width: 16rem;" *ngFor="let c of dataSource">
+      <div class="col-md-12">
+        <div class="card-body">
+          <h5 class="card-title">{{c.cat_name}}</h5>
+          <p class="card-text">Category Id: <span class="text-danger ">{{c.cat_id}}</span></p>
+          <p class="card-text">Parent Id: <span class="text-danger ">{{c.parent_id}}</span></p>
+          <p class="card-text">Created by: <span class="text-danger ">{{c.created_by}}</span></p>
+          <p class="card-text">Created At: <span class="text-danger ">{{c.created_at | date}}</span></p>
+          <a  class="btn btn-primary btn-sm me-2"
+          [routerLink]="['/dashboard/category/view',c.cat_id]">View</a>
+          <a  class="btn btn-danger btn-sm me-2" (click)="onDelete(c.cat_id)">Delete</a>
+          <a  class="btn btn-success btn-sm"
+          [routerLink]="['/dashboard/dashboard/new',c.cat_id]">Edit</a>
+
+        </div>
+      </div>
+      </div>
+
+  </div>
+
+</div>
+
+

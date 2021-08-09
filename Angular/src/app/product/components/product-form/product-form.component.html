@@ -1,0 +1,79 @@
+<mat-card>
+  <form
+    class="form-container"
+    [formGroup]="ProFrom"
+    (ngSubmit)="onSubmit()"
+    novalidate
+  >
+  <div *ngIf="mode=='create';else edit">
+    <h1 class="text-center">Create Product</h1>
+  </div>
+  <ng-template #edit>
+    <h1 class="text-center">Update Product</h1>
+  </ng-template>
+    <mat-form-field>
+      <input matInput placeholder="Product Name" formControlName="pro_name" />
+      <mat-error
+        class="text-danger"
+        *ngIf="
+          ProFrom.controls.pro_name.invalid && ProFrom.controls.pro_name.touched
+        "
+        >Product Name is required</mat-error
+      >
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput placeholder="Product Description" type="text" formControlName="pro_desc" />
+      <mat-error
+        class="text-danger"
+        *ngIf="
+        ProFrom.controls.pro_desc.invalid && ProFrom.controls.pro_desc.touched
+        "
+        >Description is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Cart ID" type="number" formControlName="cat_id" />
+      <mat-error
+        class="text-danger"
+        *ngIf="
+        ProFrom.controls.cat_id.invalid && ProFrom.controls.cat_id.touched
+        "
+        >Category Id is required</mat-error
+      >
+    </mat-form-field>
+
+    <label id="example-radio-group-label">Is Active</label>
+    <mat-radio-group  formControlName="is_active" aria-label="Select an option">
+      <mat-radio-button value=true>True</mat-radio-button>
+      <mat-radio-button value=false>False</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field>
+      <input matInput placeholder="Created By" type="text" formControlName="created_by" />
+
+    </mat-form-field>
+    <div>
+      <button
+        mat-raised-button
+        type="submit"
+        color="accent"
+        class="me-3"
+        [disabled]="!ProFrom.valid"
+        *ngIf="mode=='create'">
+          Save
+      </button>
+      <button
+        mat-raised-button
+        type="submit"
+        color="accent"
+        class="me-3"
+        [disabled]="!ProFrom.valid"
+        *ngIf="mode=='edit'">
+          Update
+      </button>
+      <button mat-raised-button type="reset">Cancel</button>
+    </div>
+  </form>
+</mat-card>

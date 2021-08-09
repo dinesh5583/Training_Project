@@ -1,0 +1,28 @@
+
+.sidenav-toggle {
+  display: none;
+  padding: 0;
+  margin: 8px;
+  min-width: 56px;
+
+}
+@media screen and (max-width: 720px) {
+  .sidenav-toggle{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+}
+
+  mat-icon {
+    font-size: 30px;
+    height: 56px;
+    width: 56px;
+    line-height: 56px;
+    color: white;
+  }
+
+a:hover{
+  border-bottom: 1px solid #fff;
+  margin-bottom: 10px;
+}

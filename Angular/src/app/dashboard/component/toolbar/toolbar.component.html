@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <button mat-button (click)="toggleSideNav.emit()"
+  class="sidenav-toggle">
+    <mat-icon>
+      menu
+    </mat-icon>
+  </button>
+
+      <span>Angular Application</span>
+
+
+<div class="w-100 ">
+  <div class="dropdown mr-1 float-end">
+    <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+      {{AuthInfo.name}}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+
+      <a class="dropdown-item" [routerLink]="['/dashboard/admin/new',AuthInfo.admin]">Edit</a>
+      <a class="dropdown-item" [routerLink]="['/dashboard/admin/view',AuthInfo.admin]">View</a>
+      <a class="dropdown-item" routerLink="/login"  routerLinkActive="active"
+      (click)="onLogout()">Logout</a>
+    </div>
+  </div>
+
+</div>
+
+
+</mat-toolbar>

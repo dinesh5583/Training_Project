@@ -1,0 +1,56 @@
+
+  <div class="container">
+  <div class="row">
+    <div class="col-md-7 mx-auto mt-2 py-3 rounded shadow box">
+      <form [formGroup]="empform" (ngSubmit)="onSignup()">
+          <h1 class="text-center">Sign up</h1>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name"
+          placeholder="Enter your name" formControlName="admin_name">
+          <small class="text-danger"
+          *ngIf="!empform.controls.admin_name.valid && empform.controls.admin_name.touched">
+          Please enter your name</small>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email"
+          placeholder="Enter email" formControlName="admin_email">
+          <small class="text-danger"
+          *ngIf="!empform.controls.admin_email.valid && empform.controls.admin_email.touched">
+          Please enter valid email</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password"
+          placeholder="Enter Password" formControlName="password">
+          <small class="text-danger"
+          *ngIf="!empform.controls.password.valid && empform.controls.password.touched">
+          Please enter your password</small>
+        </div>
+        <div class="form-group">
+          <label for="roleid">Role Id</label>
+          <input type="number" class="form-control" id="roleid"
+          placeholder="Enter role id"
+          formControlName="role_id">
+        </div>
+        <div class="form-group ">
+          <label for="radio">Is Ative</label>
+        <div class="radio" *ngFor="let a of IsActive ">
+          <label>
+            <input
+            class="text-dark"
+              type="radio"
+              formControlName="is_active"
+              [value]=a>
+              {{ a }}
+
+          </label>
+        </div>
+        </div>
+        <button type="submit" class="btn btn-danger">Signup</button>
+      </form>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<mat-card>
+  <form
+    class="form-container"
+    [formGroup]="AdminForm"
+    (ngSubmit)="onSubmit()"
+    novalidate
+  >
+  <div *ngIf="mode=='create';else edit">
+    <h1 class="text-center">Create Admin</h1>
+  </div>
+  <ng-template #edit>
+    <h1 class="text-center">Update Admin</h1>
+  </ng-template>
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="admin_name" />
+      <mat-error
+        class="text-danger"
+        *ngIf="
+          AdminForm.controls.admin_name.invalid && AdminForm.controls.admin_name.touched
+        "
+        >Name is required</mat-error
+      >
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input matInput placeholder="Email" type="email" formControlName="admin_email" />
+      <mat-error
+        class="text-danger"
+        *ngIf="
+        AdminForm.controls.admin_email.invalid && AdminForm.controls.admin_email.touched
+        "
+        >Email is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" type="password" formControlName="password" />
+      <mat-error
+        class="text-danger"
+        *ngIf="
+        AdminForm.controls.password.invalid && AdminForm.controls.password.touched
+        "
+        >Password is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Role ID" type="number" formControlName="role_id" />
+    </mat-form-field>
+
+    <label id="example-radio-group-label">Is Active</label>
+    <mat-radio-group  formControlName="is_active" aria-label="Select an option">
+      <mat-radio-button value=true>True</mat-radio-button>
+      <mat-radio-button value=false>False</mat-radio-button>
+    </mat-radio-group>
+
+    <div>
+      <button
+        mat-raised-button
+        type="submit"
+        color="accent"
+        class="me-3"
+        [disabled]="!AdminForm.valid"
+        *ngIf="mode=='create'">
+          Save
+      </button>
+      <button
+        mat-raised-button
+        type="submit"
+        color="accent"
+        class="me-3"
+        [disabled]="!AdminForm.valid"
+        *ngIf="mode=='edit'">
+          Update
+      </button>
+      <button mat-raised-button type="reset">Cancel</button>
+    </div>
+  </form>
+</mat-card>
